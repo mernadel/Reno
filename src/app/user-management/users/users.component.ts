@@ -49,7 +49,6 @@ export class UsersComponent implements OnInit {
   selection = new SelectionModel<any>(true, []);
   selectedItemCount = 0;
 
-  /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
@@ -111,12 +110,6 @@ export class UsersComponent implements OnInit {
       this.employeesList[index] = selectedItem;
     }
     dialogRef.afterClosed().subscribe((result) => {
-      // this._apis.editSelectedItem(selectedItem,this.employeesList).subscribe((res) => {
-      //   this.employeesList = res;
-
-      //   window.location.reload();
-      // });
-
       let index = this.employeesList.findIndex(
         (obj) => obj.id === selectedItem.id
       );
