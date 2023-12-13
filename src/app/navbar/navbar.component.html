@@ -1,0 +1,52 @@
+<mat-drawer-container class="nav-container">
+  <mat-drawer #drawer class="nav-sidenav" mode="side">
+    <div class="navbar-header text-light">
+      <img src="../../assets/img/logo.png" alt="reno systems logo" />
+      <input type="search" class="mt-2" placeholder="Quick access" />
+    </div>
+    <div class="navbar-items">
+      <div class="row mt-4 text-light">
+        <h5><i class="bi bi-columns me-2"></i>Dashboard</h5>
+      </div>
+      <h6 class="my-3">SETTINGS</h6>
+      <div class="row">
+        <!-- start -->
+        <a href="" class="mt-1">ATM Settings</a>
+        <a href="" class="mt-2">Business Setup</a>
+        <mat-expansion-panel hideToggle class="custom-panel mt-2">
+          <mat-expansion-panel-header>
+            <mat-panel-title>Users Management </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ul class="mt-1">
+            <li><a href="">Users</a></li>
+            <li><a href="">Profiles</a></li>
+            <li><a href="">Groups</a></li>
+          </ul>
+        </mat-expansion-panel>
+        <a href="" class="mt-2">License Management</a>
+
+        <!-- end -->
+      </div>
+    </div>
+  </mat-drawer>
+
+  <div class="nav-sidenav-content row">
+    <div class="left-side col-md-6 col-sm-12">
+      <button class="click-button" (click)="drawer.toggle()">
+        <i class="bi bi-list"></i>
+      </button>
+      <span><strong class="me-2">Good morning!</strong></span>
+      <span>{{ date | date : " EEEE MMMM d,y h:mm" }}</span>
+    </div>
+    <div class="right-side col-md-6 col-sm-12">
+      <a href=""><i class="bi bi-question-circle"></i></a>
+      <div class="bell mx-3">
+        <a href=""><i class="bi bi-bell-fill"></i></a>
+      </div>
+      <div class="user-data me-5">
+        <span><strong>Nader Amer</strong></span>
+      </div>
+    </div>
+  </div>
+  <app-user-management></app-user-management>
+</mat-drawer-container>

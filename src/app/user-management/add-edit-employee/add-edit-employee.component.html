@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row mb-3" style="background-color: #050e2d">
+    <h3 mat-dialog-title>Add New User</h3>
+  </div>
+  <form [formGroup]="employeeForm" (ngSubmit)="submitForm()">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        ><strong>Full name</strong></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="Enter full name"
+        formControlName="fullName"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        ><strong>User name</strong></label
+      >
+      <input
+        type="user"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="Enter username"
+        formControlName="userName"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        ><strong>Email address</strong></label
+      >
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Enter user email address"
+        formControlName="email"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        ><strong>User Group</strong></label
+      >
+      <select class="form-select" formControlName="userGroup">
+        <option selected>Choose User Group</option>
+
+        <option *ngFor="let group of userGroups">{{ group }}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        ><strong>Assign profile</strong></label
+      >
+      <select class="form-select" formControlName="assignProfile">
+        <option selected>Choose Profile</option>
+        <option *ngFor="let profile of profileStatus">{{ profile }}</option>
+      </select>
+    </div>
+    <div class="row mb-3">
+      <div class="col-6">
+        <button (click)="resetFields()" class="btn btn-link">
+          Reset Fields
+        </button>
+      </div>
+      <div class="col-6" dir="rtl">
+        <button class="btn btn-success" type="submit">
+          {{ data ? "Update" : "Add user" }}
+        </button>
+        <button mat-dialog-close class="btn btn-light me-3">Close</button>
+      </div>
+    </div>
+  </form>
+</div>

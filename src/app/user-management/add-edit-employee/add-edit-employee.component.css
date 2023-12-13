@@ -1,0 +1,17 @@
+.container {
+  width: 550px;
+}
+.mdc-dialog__title {
+  text-align: left;
+  color: white;
+}
+a {
+  text-decoration: none;
+  color: black;
+  text-decoration-line: underline;
+  font-weight: 900;
+}
+.form-control:focus {
+  border-color: #575757;
+  box-shadow: none;
+}

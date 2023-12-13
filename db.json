@@ -1,0 +1,13 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "fullName": "merna adel helmy",
+      "userName": "mernaadel084",
+      "email": "mernaadel00098@gmail.com",
+      "userGroup": "Managers",
+      "assignProfile": "Locked",
+      "creationDate": "2023-12-13T12:52:50.860Z"
+    }
+  ]
+}

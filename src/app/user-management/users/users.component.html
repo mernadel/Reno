@@ -1,0 +1,140 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-4">
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Search"
+        aria-label="Search"
+        [(ngModel)]="searchValue"
+        (input)="applyFilters()"
+      />
+    </div>
+    <!-- user name -->
+    <div class="col-2">
+      <input
+        class="form-control"
+        type="text"
+        placeholder="User Name"
+        [(ngModel)]="userNameFilter"
+        (input)="applyFilters()"
+      />
+    </div>
+    <!-- user status -->
+    <div class="col-2">
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        [(ngModel)]="statusFilter"
+        (change)="applyFilters()"
+      >
+        <option selected>Any</option>
+        <option value="Managers">Managers</option>
+        <option value="Office">Office</option>
+        <option value="Head Office">Head Office</option>
+      </select>
+    </div>
+    <div class="col-2">
+      <input
+        type="date"
+        id="birthday"
+        name="birthday"
+        class="form-control"
+        [(ngModel)]="dateFilter"
+        (change)="applyFilters()"
+      />
+    </div>
+  </div>
+  <div class="custom-row mt-2">
+    <h6 class="me-1">{{ selectedItemCount }} selected</h6>
+
+    <button type="button" class="btn btn-light" (click)="editSelectedItem()">
+      <i class="bi bi-pencil-fill"></i>
+    </button>
+
+    <button type="button" class="btn btn-light" (click)="deleteSelectedItems()">
+      <i class="bi bi-ban-fill"> </i>
+    </button>
+
+    <button type="button" class="btn btn-light">
+      <i class="bi bi-lock-fill"></i>
+    </button>
+
+    <button type="button" class="btn btn-light">Assign to profile</button>
+
+    <button type="button" class="btn btn-light">Assign to group</button>
+
+    <button type="button" class="btn btn-light">
+      <i class="bi bi-three-dots-vertical"></i>
+    </button>
+  </div>
+  <div class="row mt-2">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox
+            (change)="$event ? toggleAllRows() : null"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()"
+            [aria-label]="checkboxLabel()"
+          >
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox
+            (click)="$event.stopPropagation()"
+            (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)"
+            [aria-label]="checkboxLabel(row)"
+          >
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.fullName }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef>User Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email Address</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="group">
+        <th mat-header-cell *matHeaderCellDef>Group</th>
+        <td mat-cell *matCellDef="let element">{{ element.userGroup }}</td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.assignProfile }}
+        </td>
+      </ng-container>
+      <!-- created column -->
+      <ng-container matColumnDef="created">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+          Created On
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.creationDate | date }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="selection.toggle(row)"
+      ></tr>
+    </table>
+  </div>
+</div>
