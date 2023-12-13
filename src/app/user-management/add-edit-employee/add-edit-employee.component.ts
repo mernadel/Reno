@@ -25,7 +25,7 @@ export class AddEditEmployeeComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.employeeForm = this._formBuilder.group({
-      id: '1',
+      id: '',
       fullName: ['', Validators.required],
       userName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
